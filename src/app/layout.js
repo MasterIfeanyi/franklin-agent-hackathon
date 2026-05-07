@@ -1,5 +1,6 @@
 import { Nunito } from "next/font/google";
 import { StoriesProvider } from "@/context/StoriesContext";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -20,7 +21,16 @@ export default function RootLayout({ children }) {
     >
       <body
         className={`${nunito.className} antialiased h-full min-h-full flex flex-col`}>
-        <StoriesProvider>{children}</StoriesProvider>
+        <ThemeProvider
+          attribute="data-theme"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <StoriesProvider>
+            {children}
+          </StoriesProvider>
+        </ThemeProvider>
         <div id="modal-root"></div>
       </body>
     </html>

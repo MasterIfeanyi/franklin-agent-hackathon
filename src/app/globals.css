@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand */
+  --brand: #6C9EFF;
+  --brand-secondary: #FFB84D;
+
+  /* Semantic */
+  --background: #F7FAFC;
+  --foreground: #1F2937;
+  --surface: #FFFFFF;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #6C9EFF;
+
+  /* Status */
+  --primary: #4CAF93;
+  --primary-foreground: #FFFFFF;
+  --accent: #FF6B8A;
+  --accent-foreground: #FFFFFF;
+  --success: #34D399;
+  --warning: #FBBF24;
+  --error: #F87171;
+  --destructive: #F87171;
+  --destructive-foreground: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --background: #0f0f13;
+  --foreground: #F9FAFB;
+  --surface: #111827;
+  --muted: #1F2937;
+  --muted-foreground: #9CA3AF;
+  --border: #374151;
+  --input: #374151;
+  --ring: #6C9EFF;
+  --primary: #4CAF93;
+  --accent: #FF6B8A;
+  --success: #34D399;
+  --warning: #FBBF24;
+  --error: #F87171;
+  --destructive: #F87171;
 }
 
 @theme inline {
+  --color-brand: var(--brand);
+  --color-brand-secondary: var(--brand-secondary);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --font-main: "Nunito", "Poppins", sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scrollbar-width: none;
+  font-size: 16px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+}
+
+h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+h2 { font-size: 2rem; margin-bottom: 0.875rem; }
+h3 { font-size: 1.5rem; margin-bottom: 0.75rem; }
+
+p {
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: var(--foreground);
+}
+
+* {
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
