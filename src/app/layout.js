@@ -1,4 +1,5 @@
 import { Nunito } from "next/font/google";
+import { StoriesProvider } from "@/context/StoriesContext";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
     >
       <body
         className={`${nunito.className} antialiased h-full min-h-full flex flex-col`}>
-        {children}
+        <StoriesProvider>{children}</StoriesProvider>
         <div id="modal-root"></div>
       </body>
     </html>
