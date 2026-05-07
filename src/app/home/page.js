@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { FiBook, FiFileText, FiZap, FiArrowRight } from "react-icons/fi";
-import Navbar from "@/components/Navbar";
+import Image from "next/image";
 import Button from "@/components/ui/Button";
 
 const features = [
   {
     icon: FiBook,
-    title: "Story Generator",
+    title: "Story Library",
     description:
       "Browse AI-generated children's stories across Horror, Comedy, Folklore, and Action genres.",
     href: "/story",
@@ -20,7 +20,7 @@ const features = [
   },
   {
     icon: FiZap,
-    title: "Generate a Story",
+    title: "Create your own Story",
     description:
       "Describe your idea and let our AI write a children's story — genre detected automatically.",
     href: "/generate",
@@ -30,9 +30,8 @@ const features = [
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-background">
-      <Navbar />
 
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
 
         {/* Left — Hero */}
         <div className="flex flex-col gap-6">
@@ -42,7 +41,13 @@ export default function LandingPage() {
           </span>
 
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-foreground leading-tight">
-            Story<span className="text-brand">Mind</span>
+            <Image
+                src="/images/favico.png"
+                width={120} height={120}
+                className="-mx-3"
+                alt="logo-sun"
+            />
+            Tales<span className="text-brand">AI</span>
           </h1>
 
           <p className="text-muted-foreground text-lg leading-relaxed">
@@ -50,18 +55,6 @@ export default function LandingPage() {
             all routed intelligently to the best AI model for the job.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 mt-2">
-            <Link href="/generate">
-              <Button variant="primary" size="medium" className="rounded-md px-6">
-                Get Started
-              </Button>
-            </Link>
-            <Link href="/story">
-              <Button variant="neutral" size="medium" className="rounded-md px-6">
-                Browse Stories
-              </Button>
-            </Link>
-          </div>
         </div>
 
         {/* Right — Feature Cards */}
