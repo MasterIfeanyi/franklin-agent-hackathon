@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { usePathname } from "next/navigation";
-import ThemeToggle from "@/ThemeToggle";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Stories", href: "/story" },

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Button from "@/components/Button";
-import { FiSun, FiMoon } from "react-icons";
+import Button from "@/components/ui/Button";
+import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
