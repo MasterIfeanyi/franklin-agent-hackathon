@@ -20,8 +20,8 @@ Capture the key points and main ideas. Respond with ONLY valid JSON, no markdown
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "HTTP-Referer": "https://storymind.app",
-          "X-Title": "StoryMind",
+          "HTTP-Referer": "https://ifeanyi-talesai.netlify.app",
+          "X-Title": "TalesAI",
         },
         body: JSON.stringify({
           model: "auto",

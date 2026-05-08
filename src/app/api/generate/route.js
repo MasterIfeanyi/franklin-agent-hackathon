@@ -20,8 +20,8 @@ export async function POST(request) {
     const genreStyle = hasGenre ? GENRE_PROMPTS[genre] : null;
 
     const systemPrompt = hasGenre
-      ? `You are a children's story writer. Write a vivid, engaging story of 250-350 words 
-         for children aged 5-10. The story must be ${genreStyle}. 
+      ? `You are a children's story writer. Write a vivid, engaging story of 250-350 words
+         for children aged 5-10. The story must be ${genreStyle}.
          Respond with ONLY valid JSON, no markdown, no code fences, no explanation:
          {"title":"...","story":"...","genre":"${genre}","wordCount":0}`
       : `You are a children's story writer and genre classifier. 
@@ -37,8 +37,8 @@ export async function POST(request) {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          "HTTP-Referer": "https://storymind.app",
-          "X-Title": "StoryMind",
+          "HTTP-Referer": "https://ifeanyi-talesai.netlify.app",
+          "X-Title": "TalesAI",
         },
         body: JSON.stringify({
           model: "auto",
