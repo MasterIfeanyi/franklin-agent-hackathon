@@ -42,7 +42,7 @@ export default function LandingPage() {
 
           <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-foreground leading-tight">
             <Image
-                src="/images/favico.png"
+                src="/images/pix.png"
                 width={120} height={120}
                 className="-mx-3"
                 alt="logo-sun"

@@ -1,11 +1,44 @@
 "use client";
 
-import { createContext, useCallback, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 const StoriesContext = createContext(null);
 
+const STORAGE_KEY = "storymind:stories";
+
+function loadFromStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveToStorage(stories) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(stories));
+  } catch {
+    console.warn("Could not save stories to localStorage.");
+  }
+}
+
 export function StoriesProvider({ children }) {
   const [stories, setStories] = useState([]);
+  const [hydrated, setHydrated] = useState(false);
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    setStories(loadFromStorage());
+    setHydrated(true);
+  }, []);
+
+  // Save to localStorage whenever stories change
+  useEffect(() => {
+    if (hydrated) {
+      saveToStorage(stories);
+    }
+  }, [stories, hydrated]);
 
   const addStory = useCallback((story) => {
     const newStory = {
@@ -21,10 +54,13 @@ export function StoriesProvider({ children }) {
     setStories((prev) => prev.filter((s) => s.id !== id));
   }, []);
 
-  const clearStories = useCallback(() => setStories([]), []);
+  const clearStories = useCallback(() => {
+    setStories([]);
+    localStorage.removeItem(STORAGE_KEY);
+  }, []);
 
   return (
-    <StoriesContext.Provider value={{ stories, addStory, removeStory, clearStories }}>
+    <StoriesContext.Provider value={{ stories, addStory, removeStory, clearStories, hydrated }}>
       {children}
     </StoriesContext.Provider>
   );

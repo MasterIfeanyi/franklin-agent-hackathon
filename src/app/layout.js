@@ -29,9 +29,9 @@ export default function RootLayout({ children }) {
         >
           <StoriesProvider>
             {children}
+            <div id="modal-root"></div>
           </StoriesProvider>
         </ThemeProvider>
-        <div id="modal-root"></div>
       </body>
     </html>
   );
