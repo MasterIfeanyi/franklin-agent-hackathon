@@ -28,10 +28,6 @@ export default function Navbar() {
                 <div className="flex h-16 items-center justify-between">
 
                     {/* Logo */}
-                    {/* <Link href="/" className="text-xl font-bold text-brand tracking-tight">
-                        StoryMind
-                    </Link> */}
-
                     <Link href="/" className="flex gap-1 items-center">
                         <Image
                             src="/images/pix.png"
@@ -40,7 +36,7 @@ export default function Navbar() {
                             height={40}
                         />
 
-                        <span className="text-xl font-bold text-foreground">StoryMind</span>
+                        Tales<span className="text-xl font-bold text-brand tracking-tight">AI</span>
                     </Link>
 
                     {/* Desktop Links */}
